@@ -1,0 +1,22 @@
+{
+  "name": "genshin_artifact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.3.1"
+  },
+  "dependencies": {
+    "echarts": "^5.4.3",
+    "electron-packager": "^17.1.1",
+    "sqlite3": "^5.1.6",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
