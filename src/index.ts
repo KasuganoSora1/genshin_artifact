@@ -27,6 +27,7 @@ app.whenReady().then(() => {
   ipcMain.handle("get_main_tag_list",get_main_tag_list);
   ipcMain.handle("get_character_artifact_ex_async",get_character_artifact_ex_async);
   ipcMain.handle("open_yas",open_yas);
+  //ipcMain.handle("start_artifact_evalute",start_artifact_evalute);
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

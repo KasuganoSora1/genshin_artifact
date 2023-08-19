@@ -1,20 +1,4 @@
 /*
-    ----------------------------
-    套装名称对应表              
-    ----------------------------
-    DeepwordMemories            草套
-    ThunderingFury              如雷套
-    emblemOfSeveredFate         绝缘套
-    shimenawaReminiscence       追忆套
-    tenacityOfTheMillelith      千岩套
-    gladiatorFinale             角斗士
-    GildedDreams                饰金之梦
-    thunderSmoother             平雷套
-    noblesseOblige              宗室
-    viridescentVenerer          风套
-    wandererTroupe              流浪大地
-    FlowerOfParadiseLost        乐园遗落之花
-    DesertPavilionChronicle     沙上楼阁
 
     ----------------------------
     属性名称对应表              
@@ -36,9 +20,10 @@
     iceBonus                    冰伤
     rockBonus                   岩伤
     physicalBonus               物伤
+    elementalMastery            精通
+    cureEffect                  治疗
 */
 import fs from "fs";
-import {character_wei,sub_tag_weight} from "./character"
 import {RunResult, sqlite3} from "sqlite3"
 import {Database} from "sqlite3"
 import { number } from "echarts";
@@ -57,6 +42,10 @@ function get_artifact_list(){
         "wandererTroupe",//              流浪大地
         "FlowerOfParadiseLost",//        乐园遗落之花
         "DesertPavilionChronicle",//     沙上楼阁
+        "NymphsDream",//                 水仙之梦
+        "paleFlame",//                   苍白之火
+        "wandererTroupe",//              流浪大地
+        "huskOfOpulentDreams"//          华馆梦醒
     ]
 }
 function get_position_list(){
@@ -137,6 +126,7 @@ class artifact{
         this.main_tag=main_tag;
         this.sub_tag=sub_tag;
     }
+
     //typedef Map<Map<string,number>,number> sub_tag
     getperhaps(call_back:(data:Map<Map<string,number>,number>)=>void){
         let level_x=Math.round(this.level/4)+1;

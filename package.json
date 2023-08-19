@@ -14,6 +14,10 @@
   "dependencies": {
     "echarts": "^5.4.3",
     "electron-packager": "^17.1.1",
+    "images": "^3.2.4",
+    "ndarray": "^1.0.19",
+    "node-images": "^2.2.1",
+    "onnxjs": "^0.1.8",
     "sqlite3": "^5.1.6",
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",

@@ -1,7 +1,5 @@
-import { number } from "echarts";
 import { artifact, sub_tag_max,read_aritact_file } from "./artifact";
-import { sources } from "webpack";
-
+import {character_aritact, character_wei,position_main_tag_character} from "./character_tag"
 class character{
     character_name:string="";
     constructor(character_name:string){
@@ -91,83 +89,50 @@ class character{
             })
         });
     }
+    is_need_main_tag(art:artifact):boolean{
+
+        let position=art.position;
+        let main_tag_name:string="";
+
+        for(let main_tag of art.sub_tag){
+            main_tag_name=main_tag[0];
+        }
+
+        let tag_character=position_main_tag_character.get(position);
+        if(tag_character!=undefined){
+            let character_list=tag_character.get(this.character_name);
+            if(character_list!=undefined){
+                if(character_list.indexOf(this.character_name)==-1){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    get_need_sub_count(art:artifact):number{
+        let tag_name_wei=character_wei.get(this.character_name) as Map<string,number>;
+        let count=0;
+        if(tag_name_wei!=undefined){
+            for (let tag_name_value of art.sub_tag) {
+                if (tag_name_wei.has(tag_name_value[0])) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    is_need_artifact(art:artifact):boolean{
+        let need_art_list=character_aritact.get(this.character_name);
+        if(need_art_list!=undefined){
+            if(need_art_list.indexOf(art.artifact_name)!=-1){
+                return true;
+            }
+        }
+        return false;
+    }
 }
-let character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,number>>([
-    ["Hutao",new Map<string,number>([
-        ["lifePercentage",0.8],
-        ["lifeStatic",0.8],
-        ["attackPercentage",0.5],
-        ["attackStatic",0.5],
-        ["defendPercentage",0],
-        ["defendStatic",0],
-        ["critical",1],
-        ["criticalDamage",1],
-        ["elementalMastery",0.75],
-        ["recharge",0]
-    ]
-    )],
-    ["Yelan", new Map<string, number>([
-        ["lifePercentage", 0.8],
-        ["lifeStatic", 0.8],
-        ["attackPercentage", 0],
-        ["attackStatic", 0],
-        ["defendPercentage", 0],
-        ["defendStatic",0],
-        ["critical", 1],
-        ["criticalDamage", 1],
-        ["elementalMastery", 0],
-        ["recharge", 0.55]
-    ])],
-    ["Nahida",new Map<string,number>([
-        ["lifePercentage", 0],
-        ["lifeStatic", 0],
-        ["attackPercentage", 0.55],
-        ["attackStatic", 0.55],
-        ["defendPercentage", 0],
-        ["defendStatic",0],
-        ["critical", 1],
-        ["criticalDamage", 1],
-        ["elementalMastery", 1],
-        ["recharge", 0]
-    ])],
-    ["Layla",new Map<string,number>([
-        ["lifePercentage", 1],
-        ["lifeStatic", 1],
-        ["attackPercentage", 0],
-        ["attackStatic", 0],
-        ["defendPercentage", 0],
-        ["defendStatic",0],
-        ["critical", 1],
-        ["criticalDamage", 1],
-        ["elementalMastery", 0],
-        ["recharge", 0.55]
-    ])],
-    ["Keqing",new Map<string,number>([
-        ["lifePercentage", 0],
-        ["lifeStatic", 0],
-        ["attackPercentage", 0.75],
-        ["attackStatic", 0.75],
-        ["defendPercentage", 0],
-        ["defendStatic",0],
-        ["critical", 1],
-        ["criticalDamage", 1],
-        ["elementalMastery", 0],
-        ["recharge", 0]
-    ])],
-    ["RaidenShogun",new Map<string,number>([
-        ["lifePercentage", 0],
-        ["lifeStatic", 0],
-        ["attackPercentage", 0.75],
-        ["attackStatic", 0.75],
-        ["defendPercentage", 0],
-        ["defendStatic",0],
-        ["critical", 1],
-        ["criticalDamage", 1],
-        ["elementalMastery", 0],
-        ["recharge", 0.75]
-    ])]
-]);
-let sub_tag_weight:Map<string,number>=new Map<string,number>([
+
+const sub_tag_weight:Map<string,number>=new Map<string,number>([
     ["critical", 2],
     ["criticalDamage", 1],
     ["elementalMastery", 0.33],
@@ -175,7 +140,7 @@ let sub_tag_weight:Map<string,number>=new Map<string,number>([
     ["attackPercentage", 1.33],
     ["lifePercentage", 1.33],
     ["defendPercentage", 1.06],
-    ["attackStatic", 0.398*0.9],
+    ["attackStatic", 0.398*0.5],
     ["lifeStatic", 0.026*0.66],
     ["defendStatic", 0.335*0.66]
 ]);
@@ -197,16 +162,16 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
 
     let char=new character(char_name);
     let arti_s=read_aritact_file();
-    arti_s.forEach((arti)=>{
-        if(arti.artifact_name==arti_name && arti.position==posi_name) {
-            for(let main_tag_name of arti.main_tag){
-                if(main_tag_name[0]==main_name){
+    arti_s.forEach((arti) => {
+        if (arti.artifact_name == arti_name && arti.position == posi_name) {
+            for (let main_tag_name of arti.main_tag) {
+                if (main_tag_name[0] == main_name) {
                     arti_selected.push(arti);
                 }
             }
         }
     });
-    let index=0;
+    let index = 0;
     let length=arti_selected.length;
     for(let arti of arti_selected){
         let ex=await char.get_Ex_sync(arti) as number;
@@ -226,7 +191,55 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
     }
     return arti_ex;
 }
+function get_artifact_evalute(art:artifact){
+    let art_name=art.artifact_name;
+    let position=art.position;
+    let re_str="";
+    for(let char_art of character_aritact){
+        let char_name=char_art[0];
+        let art_list=char_art[1];
+        if(art.position=="flower" || art.position=="feather"){
+            let char=new character(char_name);
+            if (char.get_need_sub_count(art) != 0) {
+                re_str = re_str + `副词条中${char.character_name}所需要的为${char.get_need_sub_count(art)}条。`;
+                if(char.is_need_artifact(art)){
+                    re_str=re_str+`而且套装正确\n`;
+                }else{
+                    re_str=re_str+`可惜套装不正确\n`
+                }
+            }
+        } else {
+            let char_name = char_art[0];
+            let art_list = char_art[1];
+            let char = new character(char_name);
+            if(char.is_need_artifact(art)){
+                re_str=re_str+`该词条为${char.character_name}所需要的`+
+                              `副词条中有用的词条为${char.get_need_sub_count(art)},`;
+                if(char.is_need_artifact(art)){
+                    re_str=re_str+`而且套装正确\n`;
+                }else{
+                    re_str=re_str+`可惜套装不正确\n`
+                }
+            }
+        }
+    }
+    return re_str;
+}
+function start_artifact_evalute(event:any){
+    let arti=new artifact(5,20,
+        "gladiatorFinal","flower",
+        new Map<string,number>([["lifeStatic",717]]),
+        new Map<string,number>([["elementaryMastery",16],
+                                ["attackPercentage",0.053],
+                                ["recharge",0]]));
+    let char=new character("Hutao");
+    console.log(get_artifact_evalute(arti));
+}
 
-
-
-export{character,character_wei,sub_tag_weight,get_character_list,get_character_artifact_ex_async}
+export{character,
+    sub_tag_weight,
+    get_character_list,
+    get_character_artifact_ex_async,
+    get_artifact_evalute,
+    start_artifact_evalute
+}

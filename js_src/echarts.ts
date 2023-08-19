@@ -123,7 +123,6 @@ function init_chart() {
           },
           formatter:(data:any[])=>{
             let index=data[0].dataIndex;
-            console.log(index+":"+para_txts[index]);
             return para_txts[index];
           }
         },
@@ -156,3 +155,19 @@ function init_open_yas(){
     (window as any).data.open_yas();
   }
 }
+function init_xx(art:any):string{
+  /*
+  art is artifact
+  str:number
+  level:number
+  artifact_name:string
+  position:string
+  main_tag:Map<string,number>
+  sub_tag:Map<string,number>
+  */
+  (window as any).get_artifact_evaluate
+  return "";
+}
+
+
+
