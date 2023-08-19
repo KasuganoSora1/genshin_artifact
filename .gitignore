@@ -1,3 +1,6 @@
 node_modules
 data/index_2_word.json
 data/model_acc100-epoch49.onnx
+js_dst
+dst
+data/data.db
