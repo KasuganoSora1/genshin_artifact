@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "tsc",
+            "type": "shell",
+            "command": "tsc",
+            "dependsOn":"webpack"
+        },
+        {
+            "label": "webpack",
+            "type": "shell",
+            "command":"npx",
+            "args": ["webpack","--mode","development"]
+        }
+    ]
+}
