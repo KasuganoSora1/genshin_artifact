@@ -10,6 +10,7 @@ function init(){
   init_position();
   init_main_tag();
   init_open_yas();
+  init_open_analyse();
 }
 function init_artifact_list(){
   (window as any).data.get_artifact_list().then((character_list:string[]) => {
@@ -167,6 +168,12 @@ function init_xx(art:any):string{
   */
   (window as any).get_artifact_evaluate
   return "";
+}
+function init_open_analyse(){
+  let button=document.getElementById("open_analyse") as HTMLButtonElement;
+  button.onclick=function(){
+    (window as any).data.start_analyse();
+  }
 }
 
 
