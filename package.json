@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "packager":"electron-packager ./ arti_analyse -all -out ./out_exe --version 1.0.0 --overwrite"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^25.3.1",
+    "electron-packager": "^17.1.2",
     "ts-loader": "^9.4.4"
   },
   "dependencies": {
