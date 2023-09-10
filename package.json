@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "packager":"electron-packager ./ arti_analyse -all -out ./out_exe --version 1.0.0 --overwrite"
+    "packager": "npx electron-packager . arti_analyse --win  --arch=x64 --out ./app --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=20.1.0 --overwrite --ignore=node_module"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +15,10 @@
     "ts-loader": "^9.4.4"
   },
   "dependencies": {
+    "@electron/asar": "^3.2.4",
     "echarts": "^5.4.3",
-    "electron-packager": "^17.1.1",
+    "electron": "^26.2.0",
+    "electron-packager": "^17.1.2",
     "images": "^3.2.4",
     "ndarray": "^1.0.19",
     "node-images": "^2.2.1",
