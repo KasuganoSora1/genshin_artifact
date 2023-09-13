@@ -117,14 +117,16 @@ class artifact{
     position:string;
     main_tag:Map<string,number>;
     sub_tag:Map<string,number>;
+    equip:string;
 
-    constructor(star:number,level:number,artifact_name:string,position:string,main_tag:Map<string,number>,sub_tag:Map<string,number>){
+    constructor(star:number,level:number,artifact_name:string,position:string,main_tag:Map<string,number>,sub_tag:Map<string,number>,equip:string){
         this.star=star;
         this.level=level;
         this.artifact_name=artifact_name;
         this.position=position
         this.main_tag=main_tag;
         this.sub_tag=sub_tag;
+        this.equip=equip;
     }
 
     //typedef Map<Map<string,number>,number> sub_tag
@@ -266,7 +268,8 @@ function read_aritact_file():artifact[]{
                     [(art["normalTags"][0]["name"] as string),(art["normalTags"][0]["value"] as number)],
                     [(art["normalTags"][1]["name"] as string),(art["normalTags"][1]["value"] as number)],
                     [(art["normalTags"][2]["name"] as string),(art["normalTags"][2]["value"] as number)],
-                ])
+                ]),
+                art["equip"]
             ));
         });
     }

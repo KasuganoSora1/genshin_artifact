@@ -107,6 +107,7 @@ function init_chart() {
         for(let tag_name_tag_value of artifact_value[0].sub_tag){
           para_txt=para_txt+`<p>${tag_name_tag_value[0]}:${tag_name_tag_value[1].toFixed(2)}</p>`;
         }
+        para_txt=para_txt+`<p>${artifact_value[0].equip}</p>`;
         para_txts.push(para_txt);
         index++; 
       }

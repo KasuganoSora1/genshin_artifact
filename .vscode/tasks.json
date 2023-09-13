@@ -4,7 +4,8 @@
         {
             "label": "tsc",
             "type": "shell",
-            "command": "tsc",
+            "command": "npx",
+            "args": ["tsc"],
             "dependsOn":"webpack"
         },
         {

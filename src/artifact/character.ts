@@ -225,21 +225,23 @@ function get_artifact_evalute(art:artifact){
     }
     return re_str;
 }
+/*
 function start_artifact_evalute(event:any){
     let arti=new artifact(5,20,
         "gladiatorFinal","flower",
         new Map<string,number>([["lifeStatic",717]]),
         new Map<string,number>([["elementaryMastery",16],
                                 ["attackPercentage",0.053],
-                                ["recharge",0]]));
+                                ["recharge",0]]),
+                                "");
     let char=new character("Hutao");
     console.log(get_artifact_evalute(arti));
-}
+}*/
 
 export{character,
     sub_tag_weight,
     get_character_list,
     get_character_artifact_ex_async,
-    get_artifact_evalute,
-    start_artifact_evalute
+    get_artifact_evalute
+    //,start_artifact_evalute
 }
