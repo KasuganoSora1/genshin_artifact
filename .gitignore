@@ -4,3 +4,4 @@ data/model_acc100-epoch49.onnx
 js_dst
 dst
 data/data.db
+app

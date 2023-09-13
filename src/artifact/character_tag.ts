@@ -180,6 +180,18 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
         ["criticalDamage", 1],
         ["elementalMastery", 0],
         ["recharge", 0.55]
+    ])],
+    ["Xiangling",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.75],
+        ["attackStatic", 0.75],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0.75],
+        ["recharge", 0.55]
     ])]
 ]);
 
@@ -188,12 +200,12 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["lifePercentage",["Hutao","Yelan",
 "Layla","Nilou"]],
         ["attackPercentage",["Keqing","Beidou",
-"Fischl","YaeMiko"]],
+"Fischl","YaeMiko","Xiangling"]],
         ["defendPercentage",["YunJin","Noelle"]],
         ["elementalMastery",["Hutao","Nahida",
-"Keqing","Alhaitham","Fischl","Tighnari"]],
+"Keqing","Alhaitham","Fischl","Tighnari","Xiangling"]],
         ["recharge",["Yelan","RaidenShogun",
-"YunJin","Beidou","Xingqiu"]],
+"YunJin","Beidou","Xingqiu","Xiangling"]],
     ])],
     ["cup",new Map<string,string[]>([
         ["lifePercentage",["Layla","Nilou"]],
@@ -204,7 +216,7 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["waterBonus",["Yelan","Xingqiu"]],
         ["dendroBonus",["Nahida","Alhaitham",
 "Tighnari"]],
-        ["fireBonus",["Hutao"]],
+        ["fireBonus",["Hutao","Xiangling"]],
         ["thunderBonus",["Keqing","RaidenShogun",
 "Beidou","Fischl","YaeMiko"]],
         ["windBonus",[]],
@@ -221,11 +233,11 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["critical",["Hutao","RaidenShogun",
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "YunJin","Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu"]],
+"YaeMiko","Xingqiu","Xiangling"]],
         ["criticalDamage",["Hutao","RaidenShogun",
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu"]],
+"YaeMiko","Xingqiu","Xiangling"]],
         ["cureEffect",[]],
     ])]
 ]);
@@ -250,7 +262,8 @@ const character_aritact=new Map<string,string[]>([
     ["Nilou",["tenacityOfTheMillelith","VourukashasGlow"]],
     ["YaeMiko",["ThunderingFury","GildedDreams",
 "gladiatorFinale","wandererTroupe","FlowerOfParadiseLost"]],
-    ["Xingqiu",["emblemOfSeveredFate"]]
+    ["Xingqiu",["emblemOfSeveredFate"]],
+    ["Xiangling",["emblemOfSeveredFate"]]
 ])
 
 export {character_wei,
