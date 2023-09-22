@@ -10,7 +10,7 @@ function init(){
   init_position();
   init_main_tag();
   init_open_yas();
-  init_open_analyse();
+  init_analyse();
 }
 function init_artifact_list(){
   (window as any).data.get_artifact_list().then((character_list:string[]) => {
@@ -157,22 +157,9 @@ function init_open_yas(){
     (window as any).data.open_yas();
   }
 }
-function init_xx(art:any):string{
-  /*
-  art is artifact
-  str:number
-  level:number
-  artifact_name:string
-  position:string
-  main_tag:Map<string,number>
-  sub_tag:Map<string,number>
-  */
-  (window as any).get_artifact_evaluate
-  return "";
-}
-function init_open_analyse(){
-  let button=document.getElementById("open_analyse") as HTMLButtonElement;
-  button.onclick=function(){
+function init_analyse(){
+  let analyse_all_dom=document.getElementById("analyse_all") as HTMLElement;
+  analyse_all_dom.onclick = ()=>{
     (window as any).data.start_analyse();
   }
 }

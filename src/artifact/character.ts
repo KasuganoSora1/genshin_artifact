@@ -1,5 +1,6 @@
 import { artifact, sub_tag_max,read_aritact_file } from "./artifact";
 import {character_aritact, character_wei,position_main_tag_character} from "./character_tag"
+import fs from "fs"
 class character{
     character_name:string="";
     constructor(character_name:string){
@@ -114,7 +115,7 @@ class character{
         let count=0;
         if(tag_name_wei!=undefined){
             for (let tag_name_value of art.sub_tag) {
-                if (tag_name_wei.has(tag_name_value[0])) {
+                if (tag_name_wei.has(tag_name_value[0]) && tag_name_wei.get(tag_name_value[0])!=0) {
                     count++;
                 }
             }
@@ -191,10 +192,34 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
     }
     return arti_ex;
 }
+function get_artifact_string(arti:artifact):string{
+
+    let position=arti.position;
+    let main_tag=arti.main_tag;
+    let sub_tag =arti.sub_tag;
+    let result_str="";
+
+    for(let main_tag_name_value of main_tag){
+
+        let main_tag_name=main_tag_name_value[0];
+        let main_tag_value=main_tag_name_value[1];
+
+        result_str=result_str+`${arti.artifact_name} main_tag:${main_tag_name_value[0]}:${main_tag_name_value[1]} sub_tag:`;
+
+        for(let sub_tag_name_value of sub_tag){
+            let sub_tag_name =sub_tag_name_value[0];
+            let sub_tag_value=sub_tag_name_value[1];
+            result_str=result_str+`${sub_tag_name}:${sub_tag_value} `;
+        }
+    }
+    return result_str;
+}
 function get_artifact_evalute(art:artifact){
     let art_name=art.artifact_name;
     let position=art.position;
     let re_str="";
+    let arti_str=get_artifact_string(art)+"\n";
+    re_str=re_str+arti_str;
     for(let char_art of character_aritact){
         let char_name=char_art[0];
         let art_list=char_art[1];
@@ -213,7 +238,7 @@ function get_artifact_evalute(art:artifact){
             let art_list = char_art[1];
             let char = new character(char_name);
             if(char.is_need_artifact(art)){
-                re_str=re_str+`该词条为${char.character_name}所需要的`+
+                re_str=re_str+`该主词条为${char.character_name}所需要的\n`+
                               `副词条中有用的词条为${char.get_need_sub_count(art)},`;
                 if(char.is_need_artifact(art)){
                     re_str=re_str+`而且套装正确\n`;
@@ -225,23 +250,22 @@ function get_artifact_evalute(art:artifact){
     }
     return re_str;
 }
-/*
-function start_artifact_evalute(event:any){
-    let arti=new artifact(5,20,
-        "gladiatorFinal","flower",
-        new Map<string,number>([["lifeStatic",717]]),
-        new Map<string,number>([["elementaryMastery",16],
-                                ["attackPercentage",0.053],
-                                ["recharge",0]]),
-                                "");
-    let char=new character("Hutao");
-    console.log(get_artifact_evalute(arti));
-}*/
+function start_analyse(){
+    let artis:artifact[]=read_aritact_file();
+    let result_str="";
+    for(let arti of artis){
+        let one_str=get_artifact_evalute(arti);
+        result_str=result_str+one_str;
+    }
+    fs.writeFile("./data/analyse_all.txt",result_str,error=>{
+    });
+}
 
 export{character,
     sub_tag_weight,
     get_character_list,
     get_character_artifact_ex_async,
-    get_artifact_evalute
+    get_artifact_evalute,
+    start_analyse 
     //,start_artifact_evalute
 }

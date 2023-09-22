@@ -268,4 +268,5 @@ const character_aritact=new Map<string,string[]>([
 
 export {character_wei,
     position_main_tag_character,
-    character_aritact}
+    character_aritact
+}

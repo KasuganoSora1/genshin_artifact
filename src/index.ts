@@ -3,7 +3,7 @@ import path from "path"
 import {character, get_character_list,get_character_artifact_ex_async} from "./artifact/character"
 import {artifact, get_artifact_list,get_position_list,get_main_tag_list} from "./artifact/artifact"
 import {open_yas} from "./artifact/yas"
-import {start_analyse} from "./artifact/inference"
+import {start_analyse} from "./artifact/character"
 
 const createWindow = () => {
   const win = new BrowserWindow({

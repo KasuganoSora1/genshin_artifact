@@ -26,7 +26,9 @@
 import fs from "fs";
 import {RunResult, sqlite3} from "sqlite3"
 import {Database} from "sqlite3"
-import { number } from "echarts";
+import { AriaComponentOption, number } from "echarts";
+import {position_main_tag_character,character_aritact,character_wei} from "./character_tag"
+//import { character } from "./character";
 function get_artifact_list(){
     return [
         "DeepwoodMemories",//            草套
@@ -275,6 +277,88 @@ function read_aritact_file():artifact[]{
     }
     return artifacts;
 }
+/*
+function get_artifact_string(arti:artifact):string{
 
+    let position=arti.position;
+    let main_tag=arti.main_tag;
+    let sub_tag =arti.sub_tag;
+    let result_str="";
+
+    for(let main_tag_name_value of main_tag){
+
+        let main_tag_name=main_tag_name_value[0];
+        let main_tag_value=main_tag_name_value[1];
+
+        result_str=result_str+`main_tag:${arti.artifact_name}+${main_tag_name_value[0]}:${main_tag_name_value[1]} sub_tag:`;
+
+        for(let sub_tag_name_value of sub_tag){
+            let sub_tag_name =sub_tag_name_value[0];
+            let sub_tag_value=sub_tag_name_value[1];
+            result_str=result_str+`${sub_tag_name}:${sub_tag_value} `;
+        }
+    }
+    return result_str;
+}
+function get_useful_character(arti:artifact):string[]{
+    let position=arti.position;
+    let main_tag=arti.main_tag;
+    let main_tag_name:string;
+    for(let main_tag_value of main_tag){
+        main_tag_name=main_tag_value[0];
+    }
+    let result:string[]=[];
+    let main_tag_character=position_main_tag_character.get(position);
+    let char_list=main_tag_character.get(main_tag_name);
+    return char_list;
+}
+function get_userful_subtag_count(char:string,arti:artifact){
+
+}
+function analyse_one_character(arti:artifact,char:string):string{
+    let arti_str=get_artifact_string(arti);
+    let result_str=arti_str;
+    return result_str;
+}
+function start_analyse():string{
+    let artis:artifact[]=read_aritact_file();
+    let result_str="";
+    for(let arti of artis){
+        if(arti.star!=5){
+            continue;
+        }
+        let position=arti.position;
+        let main_tag=arti.main_tag;
+        let sub_tag=arti.sub_tag;
+        let sub_tag_name_list=[];
+
+        for(let main_tag_name_value of main_tag){
+            result_str=result_str+`${arti.artifact_name}+${main_tag_name_value[0]}:${main_tag_name_value[1]}`;
+                for(let sub_tag_name_value of sub_tag){
+                    let sub_tag_name =sub_tag_name_value[0];
+                    let sub_tag_value=sub_tag_name_value[1];
+                    sub_tag_name_list.push(sub_tag_name);
+                    result_str=result_str+`
+${sub_tag_name}:${sub_tag_value}\n
+`;
+                }
+
+            let main_tag_character=position_main_tag_character.get(position);
+            let character_names=main_tag_character.get(main_tag_name_value[0]);
+            for(let character_name of character_names){
+                result_str="对于"+character_name+"主词条适用,";
+                //判断副词条有几条适用
+                let sub_tag_name_value=character_wei.get(character_name);
+                for(let sub_tag_name of sub_tag_name_list){
+                    let char_wei_sub_tag=character_wei.get(character_name);
+                    if(char_wei_sub_tag.has(sub_tag_name)){
+
+                    }
+                }
+            }
+        }
+    }
+    return result_str;
+}*/
 export {artifact,get_artifact_list,read_aritact_file,sub_tag_max,
 get_position_list,get_main_tag_list}
