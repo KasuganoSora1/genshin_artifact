@@ -47,7 +47,9 @@ function get_artifact_list(){
         "NymphsDream",//                 水仙之梦
         "paleFlame",//                   苍白之火
         "wandererTroupe",//              流浪大地
-        "huskOfOpulentDreams"//          华馆梦醒
+        "huskOfOpulentDreams",//         华馆梦醒
+        "GoldenTroupe",//                黄金剧团
+        "MarechausseeHunter"//           逐影猎人
     ]
 }
 function get_position_list(){
@@ -215,6 +217,10 @@ class artifact{
             let db = new Database("./data/data.db", (error) => {
                 if (!error) {
                     db.all(sql_str, (e, r) => {
+                        if(r.length==0){
+                            call_back(new Map<Map<string,number>,number>());
+                            return;
+                        }
                         let id=(r[0] as any).id;
                         sql_str=`select * from l${level_x}tol6 where father_id${level_x}=${id}`;
                         db.all(sql_str,(e,r)=>{
