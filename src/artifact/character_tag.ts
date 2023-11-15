@@ -200,7 +200,7 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
         ["attackStatic", 0],
         ["defendPercentage", 0],
         ["defendStatic",0],
-        ["critical",1],
+        ["critical",0],
         ["criticalDamage", 1],
         ["elementalMastery", 0],
         ["recharge", 0.3]
