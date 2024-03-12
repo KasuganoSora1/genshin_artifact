@@ -49,7 +49,9 @@ function get_artifact_list(){
         "wandererTroupe",//              流浪大地
         "huskOfOpulentDreams",//         华馆梦醒
         "GoldenTroupe",//                黄金剧团
-        "MarechausseeHunter"//           逐影猎人
+        "MarechausseeHunter",//          逐影猎人
+        "SongOfDaysPast",//              昔日套
+        "NighttimeWhispersInTheEchoingWoods"//回声套
     ]
 }
 function get_position_list(){

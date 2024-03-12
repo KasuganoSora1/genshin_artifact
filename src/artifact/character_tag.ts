@@ -216,6 +216,18 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
         ["criticalDamage", 1],
         ["elementalMastery", 0],
         ["recharge", 0.3]
+    ])],
+    ["Navia",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.7],
+        ["attackStatic", 0.7],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0],
+        ["recharge", 0.3]
     ])]
 ]);
 
@@ -224,7 +236,7 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["lifePercentage",["Hutao","Yelan",
 "Layla","Nilou","Neuvillette","Furina"]],
         ["attackPercentage",["Keqing","Beidou",
-"Fischl","YaeMiko","Xiangling"]],
+"Fischl","YaeMiko","Xiangling","Navia"]],
         ["defendPercentage",["YunJin","Noelle"]],
         ["elementalMastery",["Hutao","Nahida",
 "Keqing","Alhaitham","Fischl","Tighnari","Xiangling"]],
@@ -245,7 +257,7 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
 "Beidou","Fischl","YaeMiko"]],
         ["windBonus",[]],
         ["iceBonus",[]],
-        ["rockBonus",["Noelle"]],
+        ["rockBonus",["Noelle","Navia"]],
         ["physicalBonus",[]]
     ])],
     ["head",new Map<string,string[]>([
@@ -257,11 +269,13 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["critical",["Hutao","RaidenShogun",
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "YunJin","Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina"]],
+"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
+"Navia"]],
         ["criticalDamage",["Hutao","RaidenShogun",
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina"]],
+"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
+"Navia"]],
         ["cureEffect",[]],
     ])]
 ]);
@@ -289,7 +303,8 @@ const character_aritact=new Map<string,string[]>([
     ["Xingqiu",["emblemOfSeveredFate"]],
     ["Xiangling",["emblemOfSeveredFate"]],
     ["Neuvillette",["MarechausseeHunter"]],
-    ["Furina",["MarechausseeHunter","GoldenTroup"]]
+    ["Furina",["MarechausseeHunter","GoldenTroup"]],
+    ["Navia",["NighttimeWhispersInTheEchoingWoods"]]
 ])
 
 export {character_wei,
