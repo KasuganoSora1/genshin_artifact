@@ -1,6 +1,9 @@
 import { artifact, sub_tag_max,read_aritact_file } from "./artifact";
 import {character_aritact, character_wei,position_main_tag_character} from "./character_tag"
 import fs from "fs"
+/*
+更新圣遗物算法，数学算法上有了一点突破
+*/
 class character{
     character_name:string="";
     constructor(character_name:string){
