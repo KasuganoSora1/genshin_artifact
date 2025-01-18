@@ -137,7 +137,7 @@ class artifact{
 
     //typedef Map<Map<string,number>,number> sub_tag
     getperhaps(call_back:(data:Map<Map<string,number>,number>)=>void){
-        let level_x=Math.round(this.level/4)+1;
+        let level_x=Math.round(this.level/4)+1;//0 4 8 12 16 20
         let tag1_x: number = 0;
         let tag2_x: number = 0;
         let tag3_x: number = 0;

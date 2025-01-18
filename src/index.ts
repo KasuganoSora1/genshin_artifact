@@ -3,7 +3,7 @@ import path from "path"
 import {character, get_character_list,get_character_artifact_ex_async} from "./artifact/character"
 import {artifact, get_artifact_list,get_position_list,get_main_tag_list} from "./artifact/artifact"
 import {open_yas} from "./artifact/yas"
-import {start_analyse} from "./artifact/character"
+//import {start_analyse} from "./artifact/character"
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -28,7 +28,7 @@ app.whenReady().then(() => {
   ipcMain.handle("get_main_tag_list",get_main_tag_list);
   ipcMain.handle("get_character_artifact_ex_async",get_character_artifact_ex_async);
   ipcMain.handle("open_yas",open_yas);
-  ipcMain.handle("start_analyse",start_analyse);
+  //ipcMain.handle("start_analyse",start_analyse);
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

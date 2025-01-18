@@ -232,6 +232,7 @@ function get_artifact_string(arti:artifact):string{
     }
     return result_str;
 }
+/*
 function get_artifact_evalute(art:artifact){
     let art_name=art.artifact_name;
     let position=art.position;
@@ -267,7 +268,8 @@ function get_artifact_evalute(art:artifact){
         }
     }
     return re_str;
-}
+}*/
+/*
 function start_analyse(){
     let artis:artifact[]=read_aritact_file();
     let result_str="";
@@ -277,13 +279,11 @@ function start_analyse(){
     }
     fs.writeFile("./data/analyse_all.txt",result_str,error=>{
     });
-}
+}*/
 
 export{character,
     sub_tag_weight,
     get_character_list,
-    get_character_artifact_ex_async,
-    get_artifact_evalute,
-    start_analyse 
+    get_character_artifact_ex_async
     //,start_artifact_evalute
 }
