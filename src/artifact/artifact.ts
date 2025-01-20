@@ -30,6 +30,31 @@ import { AriaComponentOption, number } from "echarts";
 import {position_main_tag_character,character_aritact,character_wei} from "./character_tag"
 //import { character } from "./character";
 function get_artifact_list(){
+    return {
+        "DeepwoodMemories":"草套",
+        "thunderingFury":"如雷套",
+        "emblemOfSeveredFate":"绝缘套",
+        "shimenawaReminiscence":"追忆套",
+        "tenacityOfTheMillelith":"千岩套",
+        "gladiatorFinale":"角斗士",
+        "GildedDreams":"饰金之梦",
+        "thunderSmoother":"平雷套",
+        "noblesseOblige":"宗室",
+        "viridescentVenerer":"风套",
+        "wandererTroupe":"流浪大地",
+        "FlowerOfParadiseLost":"乐园遗落之花",
+        "DesertPavilionChronicle":"沙上楼阁",
+        "NymphsDream":"水仙之梦",
+        "paleFlame":"苍白之火",
+        "huskOfOpulentDreams":"华馆梦醒",
+        "GoldenTroupe":"黄金剧团",
+        "MarechausseeHunter":"逐影猎人",
+        "SongOfDaysPast":"昔日套",
+        "NighttimeWhispersInTheEchoingWoods":"回声套",
+        "ObsidianCodex":"黑曜套",
+        "ScrollOfTheHeroOfCinderCity":"夜魂套"
+    }
+    /*
     return [
         "DeepwoodMemories",//            草套
         "thunderingFury",//              如雷套
@@ -54,7 +79,7 @@ function get_artifact_list(){
         "NighttimeWhispersInTheEchoingWoods",//回声套
         "ObsidianCodex",//                 黑曜套
         "ScrollOfTheHeroOfCinderCity"//   夜魂套
-    ]
+    ]*/
 }
 function get_position_list(){
     return [

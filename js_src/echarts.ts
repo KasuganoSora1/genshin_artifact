@@ -13,15 +13,23 @@ function init(){
   init_analyse();
 }
 function init_artifact_list(){
-  (window as any).data.get_artifact_list().then((character_list:string[]) => {
+  (window as any).data.get_artifact_list().then((artifact_list:Object) => {
     let character_selector = document.getElementById("artifact");
+    for(let artifact_en in artifact_list){
+      let character_dom = document.createElement("option");
+      character_dom.setAttribute("id", artifact_en);
+      character_dom.setAttribute("value", artifact_en);
+      character_dom.innerText=artifact_list[artifact_en];
+      (character_selector as HTMLElement).appendChild(character_dom);
+    }
+    /*
     character_list.forEach((v: string) => {
       let character_dom = document.createElement("option");
       character_dom.setAttribute("id", v);
       character_dom.setAttribute("value", v);
       character_dom.innerText=v;
       (character_selector as HTMLElement).appendChild(character_dom);
-    });
+    });*/
   });
 }
 function init_position() {
@@ -67,13 +75,20 @@ function set_first_selector(selector:HTMLSelectElement){
 function init_character_list() {
   (window as any).data.get_character_list().then((character_list: string[]) => {
     let character_selector = document.getElementById("character");
-    character_list.forEach((v: string) => {
+    for(let character_en in character_list){
+      let character_dom = document.createElement("option");
+      character_dom.setAttribute("id", character_en);
+      character_dom.setAttribute("value", character_en);
+      character_dom.innerText = character_list[character_en];
+      (character_selector as HTMLElement).appendChild(character_dom);
+    }
+    /*character_list.forEach((v: string) => {
       let character_dom = document.createElement("option");
       character_dom.setAttribute("id", v);
       character_dom.setAttribute("value", v);
       character_dom.innerText = v;
       (character_selector as HTMLElement).appendChild(character_dom);
-    });
+    });*/
   });
 }
 function init_chart() {

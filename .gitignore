@@ -6,3 +6,5 @@ dst
 data/data.db
 app
 data/mona.json
+arti_analyse-win32-x64/*
+data/*

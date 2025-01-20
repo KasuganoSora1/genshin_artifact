@@ -17,7 +17,8 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-  win.loadFile('./index.html')
+  win.loadFile('./index.html');
+  win.webContents.openDevTools({mode:'detach'});
 }
 
 app.whenReady().then(() => {

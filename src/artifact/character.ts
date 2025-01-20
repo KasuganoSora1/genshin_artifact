@@ -150,7 +150,32 @@ class character{
         return false;
     }
 }
-
+const character_en_cn=new Map<string,string>([
+    ["Hutao","胡桃"],
+    ["Yelan","夜兰"],
+    ["Nahida","纳西达"],
+    ["Layla","莱伊拉"],
+    ["Keqing","刻晴"],
+    ["RaidenShogun","雷电将军"],
+    ["Alhaitham","艾尔海森"],
+    ["YunJin","云锦"],
+    ["Noelle","诺艾尔"],
+    ["Beidou","北斗"],
+    ["Fischl","菲谢尔"],
+    ["Tighnari","提纳里"],
+    ["Nilou","妮露"],
+    ["YaeMiko","八重神子"],
+    ["Xingqiu","行秋"],
+    ["Xiangling","香菱"],
+    ["Neuvillette","那维莱特"],
+    ["Furina","芙宁娜"],
+    ["Navia","纳维亚"],
+    ["Gaming","嘉明"],
+    ["Clorinde","柯洛琳的"],
+    ["Arlecchino","阿蕾奇诺"],
+    ["Mavuika","玛薇卡"],
+    ["Xilonen","希诺宁"]
+]);
 const sub_tag_weight:Map<string,number>=new Map<string,number>([
     ["critical", 2],
     ["criticalDamage", 1],
@@ -163,10 +188,14 @@ const sub_tag_weight:Map<string,number>=new Map<string,number>([
     ["lifeStatic", 0.026*0.66],
     ["defendStatic", 0.335*0.66]
 ]);
-function get_character_list():string[]{
-    let re:string[]=[];
+function get_character_list():Object{
+    let re={};
     character_wei.forEach((v,n)=>{
-        re.push(n);
+        if(character_en_cn.has(n)){
+            re[n]=character_en_cn.get(n);
+        }else{
+            re[n]=n;
+        };
     });
     return re;
 };
