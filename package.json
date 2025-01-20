@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "packager": "npx electron-packager . arti_analyse --win  --arch=x64 --out ./app --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --electron-version=20.1.0 --overwrite --ignore=node_module"
+    "packager": "npx electron-packager . arti_analyse --platform=win32 --electron-version=26.2.0"
   },
   "author": "",
   "license": "ISC",

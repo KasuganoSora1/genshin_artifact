@@ -51,7 +51,9 @@ function get_artifact_list(){
         "GoldenTroupe",//                黄金剧团
         "MarechausseeHunter",//          逐影猎人
         "SongOfDaysPast",//              昔日套
-        "NighttimeWhispersInTheEchoingWoods"//回声套
+        "NighttimeWhispersInTheEchoingWoods",//回声套
+        "ObsidianCodex",//                 黑曜套
+        "ScrollOfTheHeroOfCinderCity"//   夜魂套
     ]
 }
 function get_position_list(){

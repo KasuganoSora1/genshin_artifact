@@ -240,6 +240,66 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
         ["criticalDamage", 1],
         ["elementalMastery", 0.75],
         ["recharge", 0.3]
+    ])],
+    ["Clorinde",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.70],
+        ["attackStatic", 0.70],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0.50],
+        ["recharge", 0.30]
+    ])],
+    ["Clorinde",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.70],
+        ["attackStatic", 0.70],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0.50],
+        ["recharge", 0.30]
+    ])],
+    ["Arlecchino",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.70],
+        ["attackStatic", 0.70],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0.50],
+        ["recharge", 0]
+    ])],
+    ["Mavuika",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0.75],
+        ["attackStatic", 0.75],
+        ["defendPercentage", 0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage", 1],
+        ["elementalMastery", 0.75],
+        ["recharge", 0]
+    ])],
+    ["Xilonen",new Map([
+        ["lifePercentage", 0],
+        ["lifeStatic", 0],
+        ["attackPercentage",0],
+        ["attackStatic", 0],
+        ["defendPercentage", 1],
+        ["defendStatic",1],
+        ["critical",0.5],
+        ["criticalDamage", 0.5],
+        ["elementalMastery", 0],
+        ["recharge", 0]
     ])]
 ]);
 
