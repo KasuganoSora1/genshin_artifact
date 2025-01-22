@@ -109,14 +109,23 @@ function init_chart() {
     (window as any).data.get_character_artifact_ex(character_name, artifact_name, position_name, main_tag_name).then((artifact_Ex_map:Map<any,number>) => {
       
       let artifacts:any[] = [];
-      let values: number[] = [];
+      let values: any[] = [];
       let names:string[]=[];
       let index=1;
       let para_txts:string[]=[];
       for (let artifact_value of artifact_Ex_map) {
         artifacts.push(artifact_value[0]);//artifact
         names.push(index.toString()+"-lv"+artifact_value[0].level.toString());
-        values.push(artifact_value[1]);
+        if(artifact_value[0].sub_tag.size==3){
+          values.push({
+            value:artifact_value[1],
+            itemStyle:{
+              color: '#a90000'
+            }
+          });
+        }else{
+          values.push(artifact_value[1]);
+        }
         let para_txt:string="";
         para_txt=para_txt+`<p>${index}-lv${artifact_value[0].level}</p>`;
         for(let tag_name_tag_value of artifact_value[0].sub_tag){
