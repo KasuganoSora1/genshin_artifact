@@ -52,7 +52,9 @@ function get_artifact_list(){
         "SongOfDaysPast":"昔日套",
         "NighttimeWhispersInTheEchoingWoods":"回声套",
         "ObsidianCodex":"黑曜套",
-        "ScrollOfTheHeroOfCinderCity":"夜魂套"
+        "ScrollOfTheHeroOfCinderCity":"夜魂套",
+        "FragmentOfHarmonicWhimsy":"谐律套",
+        "UnfinishedReverie":"燃烧套"
     }
     /*
     return [
@@ -128,6 +130,16 @@ function get_main_tag_list(event:any,position:any){
             return [];
             break;
     }
+}
+function factorial(n){
+    let fac=1;
+    for(let i=0;i<n;i++){
+        fac=fac*(i+1);
+    }
+    return fac;
+}
+function combin(m,n){
+    return factorial(m)/(factorial(n)*factorial(m-n))
 }
 const sub_tag_max: Map<string, number> = new Map([
     ["recharge", 0.0648],
@@ -271,6 +283,32 @@ class artifact{
             });
         }
         
+    }
+    getperhasps_EX():Map<string,number>{
+        let add_count=5-Math.floor(this.level/4);
+        //0<=add_count<=5
+        let re=new Map<string,number>();
+        for(let index=1;index<=Math.pow(4,add_count);index++){
+            let re_one=[0,0,0,0];
+            let i1=0;
+            let i2=0;
+            let i3=0;
+            let i4=0;
+           //MOD(ROUNDDOWN((A1-1)/64,0),4)+1
+           i1=((Math.floor((index-1)/1)) % 4)+1;
+           i2=((Math.floor((index-1)/4)) % 4)+1;
+           i3=((Math.floor((index-1)/16)) % 4)+1;
+           i4=((Math.floor((index-1)/64)) % 4)+1;
+           console.log(i1.toString()+","+
+                i2.toString()+","+
+                i3.toString()+","+
+                i4.toString());
+           re_one[i1]=re_one[i1]+1;
+           re_one[i1]=re_one[i1]+1;
+           re_one[i1]=re_one[i1]+1;
+           re_one[i1]=re_one[i1]+1;
+        }
+        return null;
     }
 }
 function read_aritact_file():artifact[]{

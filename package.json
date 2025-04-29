@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "packager": "npx electron-packager . arti_analyse --platform=win32 --electron-version=26.2.0"
+    "packager": "npx electron-packager . arti_analyse --platform=win32 --electron-version=26.2.0",
+    "test":"node ./dst/test/test.js"
   },
   "author": "",
   "license": "ISC",

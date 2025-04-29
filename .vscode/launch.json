@@ -7,13 +7,24 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "启动程序",
+            "name": "compile",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "runtimeExecutable": "npm",
             "runtimeArgs": ["start"],
             "preLaunchTask": "tsc"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["test"],
+            "preLaunchTask":"tsc-no-webpack"
         }
     ]
 }
