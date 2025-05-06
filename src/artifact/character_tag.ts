@@ -377,9 +377,12 @@ const character_aritact=new Map<string,string[]>([
     ["Neuvillette",["MarechausseeHunter"]],
     ["Furina",["MarechausseeHunter","GoldenTroup"]],
     ["Navia",["NighttimeWhispersInTheEchoingWoods"]]
-])
+]);
+
+const ex_count_ratio=[0.85,1.7,2.55,3.4,4.25];
 
 export {character_wei,
     position_main_tag_character,
-    character_aritact
+    character_aritact,
+    ex_count_ratio
 }

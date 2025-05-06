@@ -1,5 +1,5 @@
 import { artifact, sub_tag_max,read_aritact_file } from "./artifact";
-import {character_aritact, character_wei,position_main_tag_character} from "./character_tag"
+import {character_aritact, character_wei,ex_count_ratio,position_main_tag_character} from "./character_tag"
 import fs from "fs"
 /*
 算法已经放到独立文件夹了
@@ -72,7 +72,7 @@ class character{
         if(art.main_tag.has("critical") || art.main_tag.has("criticalDamage")){
             score=score+10;
         }
-        score=Math.round(score);
+        //score=Math.round(score);
         return score;
     }
     get_Ex(art:artifact,call_back:(data:number)=>void){
@@ -134,6 +134,92 @@ class character{
         }
         return false;
     }
+
+    get_score_now(art:artifact):number{
+        let score=0;
+        let char_wei:Map<string,number>=(character_wei.get(this.character_name) as Map<string,number>);
+        for(let p of art.sub_tag){
+            let tag_name=p[0];//tag_name
+            let tag_value=p[1];//tag_value
+            //if percentage
+            //0.7*max*100*c_wei*t_wei
+            let t_wei:number=sub_tag_weight.get(tag_name) as number;
+            let c_wei:number=char_wei.get(tag_name) as number;
+            let t_max:number;
+            if (tag_name.endsWith("Percentage") || tag_name=="recharge"
+            || tag_name=="critical" || tag_name=="criticalDamage") {
+                t_max = 100;
+            } else {
+                t_max =1;
+            }
+            score=score+tag_value*t_max*t_wei*c_wei;
+        }
+        if(art.main_tag.has("critical") || art.main_tag.has("criticalDamage")){
+            score=score+10;
+        }
+        return score;
+    }
+
+    get_one_add_score_Ex(art:artifact,perhap):number{
+        let score=0;
+        let char_wei:Map<string,number>=(character_wei.get(this.character_name) as Map<string,number>);
+        let index=0;
+        for (let tag_name of art.sub_tag.keys()) {
+            let t_wei: number = sub_tag_weight.get(tag_name) as number;
+            let c_wei: number = char_wei.get(tag_name) as number;
+            let t_max: number;
+            if (tag_name.endsWith("Percentage") || tag_name == "recharge"
+                || tag_name == "critical" || tag_name == "criticalDamage") {
+                t_max = (sub_tag_max.get(tag_name) as number) * 100;
+            } else {
+                t_max = sub_tag_max.get(tag_name) as number;
+            }
+            score = score + perhap[index] * t_max * t_wei * c_wei*0.85;
+            index++;
+        }
+        if(art.sub_tag.size==3){
+            let count=sub_tag_max.size-3;
+            for(let sub_tag_name of sub_tag_max.keys()){
+                let t_max;
+                let t_wei=sub_tag_weight.get(sub_tag_name);
+                let c_wei=char_wei.get(sub_tag_name);
+                if(!art.sub_tag.has(sub_tag_name)){
+                    if (sub_tag_name.endsWith("Percentage") || sub_tag_name == "recharge"
+                        || sub_tag_name == "critical" || sub_tag_name == "criticalDamage") {
+                        t_max = (sub_tag_max.get(sub_tag_name) as number) * 100;
+                    }else{
+                        t_max = sub_tag_max.get(sub_tag_name) as number;
+                    }
+                    score=score+(1/count)*perhap[3]*t_max*t_wei*c_wei*0.85;
+                }
+            }
+        }
+        return score;
+    }
+    get_add_score_Ex(art:artifact):number{
+        let score=0;
+        let char_wei:Map<string,number>=(character_wei.get(this.character_name) as Map<string,number>);
+        let perhaps=art.get_perhaps();
+        if(perhaps.length==0){
+            return 0;
+        }
+        let total_times;
+        let add_times=art.getaddtimes();
+        if(art.sub_tag.size==3){
+            total_times=Math.pow(4,add_times-1);
+        }else{
+            total_times=Math.pow(4,add_times);
+        }
+        perhaps.forEach( (perhap) => {
+            score=score+(perhap[4]/total_times)*this.get_one_add_score_Ex(art,perhap);
+        });
+        return score;
+    }
+
+    get_Ex1(art:artifact):number{
+        return this.get_score_now(art)+this.get_add_score_Ex(art);
+    }
+
 }
 const character_en_cn=new Map<string,string>([
     ["Hutao","胡桃"],

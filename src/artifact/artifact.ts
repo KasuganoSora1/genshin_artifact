@@ -28,6 +28,7 @@ import {RunResult, sqlite3} from "sqlite3"
 import {Database} from "sqlite3"
 import { AriaComponentOption, number } from "echarts";
 import {position_main_tag_character,character_aritact,character_wei} from "./character_tag"
+import {all_perhaps} from "./data"
 //import { character } from "./character";
 function get_artifact_list(){
     return {
@@ -299,16 +300,38 @@ class artifact{
            i2=((Math.floor((index-1)/4)) % 4)+1;
            i3=((Math.floor((index-1)/16)) % 4)+1;
            i4=((Math.floor((index-1)/64)) % 4)+1;
-           console.log(i1.toString()+","+
-                i2.toString()+","+
-                i3.toString()+","+
-                i4.toString());
            re_one[i1]=re_one[i1]+1;
            re_one[i1]=re_one[i1]+1;
            re_one[i1]=re_one[i1]+1;
            re_one[i1]=re_one[i1]+1;
         }
         return null;
+    }
+
+    getaddtimes():number{
+        let add_times=0;
+        add_times=Math.ceil((20-this.level)/4);
+        return add_times;
+    }
+    /**
+     * 获取可能的情况数组 
+     * 比如加2次 其中 [1,1,0,0,2] 代表tag1加了1次，tag2加了1次，tag3加了0次，tag4加了0次，tag5代表这种情况有2个
+     * 根据当前的子标签大小和添加次数，返回对应的可能情况数组
+     *
+     * @returns 返回可能的情况数组
+     */
+    get_perhaps():number[][]{
+        let add_times=this.getaddtimes();
+        if(add_times==0){return [];}
+        if(this.sub_tag.size==3){
+            let perhaps_temp=all_perhaps["A"+(add_times-1).toString()];
+            let perhaps=JSON.parse(JSON.stringify(perhaps_temp));
+            perhaps.map((v:number)=>{v[3]=v[3]+1});
+            return perhaps;
+        }else{
+            let perhaps=all_perhaps["A"+add_times.toString()];
+            return perhaps;
+        }
     }
 }
 function read_aritact_file():artifact[]{
