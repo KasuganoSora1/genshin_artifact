@@ -22,6 +22,11 @@ function init_artifact_list(){
       character_dom.innerText=artifact_list[artifact_en];
       (character_selector as HTMLElement).appendChild(character_dom);
     }
+    let character_dom = document.createElement("option");
+    character_dom.setAttribute("id","all");
+    character_dom.setAttribute("value","all");
+    character_dom.innerText="全部";
+    character_selector?.appendChild(character_dom);
     /*
     character_list.forEach((v: string) => {
       let character_dom = document.createElement("option");
@@ -131,7 +136,8 @@ function init_chart() {
         for(let tag_name_tag_value of artifact_value[0].sub_tag){
           para_txt=para_txt+`<p>${tag_name_tag_value[0]}:${tag_name_tag_value[1].toFixed(2)}</p>`;
         }
-        para_txt=para_txt+`<p>${artifact_value[0].equip}</p>`;
+        para_txt=para_txt+`<p>equiqment:${artifact_value[0].equip}</p>`;
+        para_txt=para_txt+`<p>score:${artifact_value[1].toFixed(0)}</p>`;
         para_txts.push(para_txt);
         index++; 
       }

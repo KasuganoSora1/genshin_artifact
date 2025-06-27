@@ -1,1 +1,1 @@
-require("./dst/index.js")
+require("./dst/src/index.js")

@@ -55,7 +55,9 @@ function get_artifact_list(){
         "ObsidianCodex":"黑曜套",
         "ScrollOfTheHeroOfCinderCity":"夜魂套",
         "FragmentOfHarmonicWhimsy":"谐律套",
-        "UnfinishedReverie":"燃烧套"
+        "UnfinishedReverie":"燃烧套",
+        "FinaleOfTheDeepGalleries":"深廊终曲",
+        "LongNightsOath":"长夜之誓"
     }
     /*
     return [
@@ -370,6 +372,11 @@ function read_aritact_file():artifact[]{
                 art["equip"]
             ));
         });
+    }
+    for(let art of artifacts){
+        if(art.level >=20){
+            art.level=20;
+        }
     }
     return artifacts;
 }

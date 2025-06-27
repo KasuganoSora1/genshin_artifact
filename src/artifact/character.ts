@@ -271,6 +271,7 @@ function get_character_list():Object{
     return re;
 };
 async function get_character_artifact_ex_async(event:any,args:any[]){
+    let t1=Date.now();
 
     let char_name=args[0] as string;
     let arti_name=args[1] as string;
@@ -282,10 +283,20 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
     let char=new character(char_name);
     let arti_s=read_aritact_file();
     arti_s.forEach((arti) => {
-        if (arti.artifact_name == arti_name && arti.position == posi_name) {
-            for (let main_tag_name of arti.main_tag) {
-                if (main_tag_name[0] == main_name) {
-                    arti_selected.push(arti);
+        if (arti_name == "all") {
+            if (arti.position == posi_name) {
+                for (let main_tag_name of arti.main_tag) {
+                    if (main_tag_name[0] == main_name) {
+                        arti_selected.push(arti);
+                    }
+                }
+            }
+        } else {
+            if (arti.artifact_name == arti_name && arti.position == posi_name) {
+                for (let main_tag_name of arti.main_tag) {
+                    if (main_tag_name[0] == main_name) {
+                        arti_selected.push(arti);
+                    }
                 }
             }
         }
@@ -293,7 +304,8 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
     let index = 0;
     let length=arti_selected.length;
     for(let arti of arti_selected){
-        let ex=await char.get_Ex_sync(arti) as number;
+        //let ex=await char.get_Ex_sync(arti) as number;
+        let ex=char.get_Ex1(arti) as number;
         let x_name="";
         x_name=x_name+index.toString();
         x_name = x_name + "-lv" + arti.level.toString();
@@ -308,6 +320,8 @@ async function get_character_artifact_ex_async(event:any,args:any[]){
         index++;
         */
     }
+    let t2=Date.now();
+    console.log("get_Ex time:",t2-t1);
     return arti_ex;
 }
 function get_artifact_string(arti:artifact):string{

@@ -73,7 +73,7 @@ function fn(index){
     c.get_Ex_sync(arts[index]).then((res)=>{
         t3=Date.now();
         console.log("old:"+res.toString());
-        console.log("time new"+(t2-t1).toString()+"ms; time old:"+(t3-t2).toString()+"ms;\n\n");
+        console.log("time new:"+(t2-t1).toString()+"ms; time old:"+(t3-t2).toString()+"ms;\n\n");
         fn(index+1);
     }); 
 }

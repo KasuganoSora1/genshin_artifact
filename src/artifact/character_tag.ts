@@ -300,6 +300,30 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
         ["criticalDamage", 0.5],
         ["elementalMastery", 0],
         ["recharge", 0]
+    ])],
+    ["Escoffier", new Map([
+            ["lifePercentage", 0],
+            ["lifeStatic", 0],
+            ["attackPercentage", 0.75],
+            ["attackStatic", 0.75],
+            ["defendPercentage", 0],
+            ["defendStatic", 0],
+            ["critical", 1],
+            ["criticalDamage", 1],
+            ["elementalMastery", 0],
+            ["recharge", 0.3]
+    ])],
+    ["Skirk", new Map([
+            ["lifePercentage", 0],
+            ["lifeStatic", 0],
+            ["attackPercentage", 0.75],
+            ["attackStatic", 0.75],
+            ["defendPercentage", 0],
+            ["defendStatic", 0],
+            ["critical", 1],
+            ["criticalDamage", 1],
+            ["elementalMastery", 0],
+            ["recharge", 0]
     ])]
 ]);
 
@@ -308,16 +332,16 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["lifePercentage",["Hutao","Yelan",
 "Layla","Nilou","Neuvillette","Furina"]],
         ["attackPercentage",["Keqing","Beidou",
-"Fischl","YaeMiko","Xiangling","Navia"]],
+"Fischl","YaeMiko","Xiangling","Navia","Escoffier","Skirk"]],
         ["defendPercentage",["YunJin","Noelle"]],
         ["elementalMastery",["Hutao","Nahida",
 "Keqing","Alhaitham","Fischl","Tighnari","Xiangling"]],
         ["recharge",["Yelan","RaidenShogun",
-"YunJin","Beidou","Xingqiu","Xiangling"]],
+"YunJin","Beidou","Xingqiu","Xiangling","Escoffier"]],
     ])],
     ["cup",new Map<string,string[]>([
         ["lifePercentage",["Layla","Nilou","Neuvillette","Furina"]],
-        ["attackPercentage",["Beidou"]],
+        ["attackPercentage",["Beidou","Skirk"]],
         ["defendPercentage",["YunJin"]],
         ["elementalMastery",["Nahida"]],
 
@@ -328,13 +352,13 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
         ["thunderBonus",["Keqing","RaidenShogun",
 "Beidou","Fischl","YaeMiko"]],
         ["windBonus",[]],
-        ["iceBonus",[]],
+        ["iceBonus",["Escoffier","Skirk"]],
         ["rockBonus",["Noelle","Navia"]],
         ["physicalBonus",[]]
     ])],
     ["head",new Map<string,string[]>([
         ["lifePercentage",["Layla","Nilou"]],
-        ["attackPercentage",[]],
+        ["attackPercentage",["Skirk"]],
         ["defendStatic",["YunJin"]],
         ["elementalMastery",[]],
 
@@ -342,12 +366,12 @@ const position_main_tag_character=new Map<string,Map<string,string[]>>([
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "YunJin","Noelle","Beidou","Fischl","Tighnari",
 "YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
-"Navia"]],
+"Navia","Escoffier","Skirk"]],
         ["criticalDamage",["Hutao","RaidenShogun",
 "Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
 "Noelle","Beidou","Fischl","Tighnari",
 "YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
-"Navia"]],
+"Navia","Escoffier","Skirk"]],
         ["cureEffect",[]],
     ])]
 ]);
@@ -376,7 +400,9 @@ const character_aritact=new Map<string,string[]>([
     ["Xiangling",["emblemOfSeveredFate"]],
     ["Neuvillette",["MarechausseeHunter"]],
     ["Furina",["MarechausseeHunter","GoldenTroup"]],
-    ["Navia",["NighttimeWhispersInTheEchoingWoods"]]
+    ["Navia",["NighttimeWhispersInTheEchoingWoods"]],
+    ["Escoffier",["GoldenTroupe"]],
+    ["Skirk",["MarechausseeHunter","FinaleOfTheDeepGalleries"]]
 ]);
 
 const ex_count_ratio=[0.85,1.7,2.55,3.4,4.25];
