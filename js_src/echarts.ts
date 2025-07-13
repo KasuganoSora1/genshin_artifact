@@ -190,7 +190,11 @@ function init_open_yas(){
 function init_analyse(){
   let analyse_all_dom=document.getElementById("analyse_all") as HTMLElement;
   analyse_all_dom.onclick = ()=>{
+    analyse_all_dom.style.opacity="0.5";
+    analyse_all_dom.style.pointerEvents="none";
     (window as any).data.start_analyse();
+    analyse_all_dom.style.opacity="1.0";
+    analyse_all_dom.style.pointerEvents="auto";
   }
 }
 

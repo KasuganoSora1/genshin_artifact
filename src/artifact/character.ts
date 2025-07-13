@@ -1,3 +1,4 @@
+import { number } from "echarts";
 import { artifact, sub_tag_max,read_aritact_file } from "./artifact";
 import {character_aritact, character_wei,ex_count_ratio,position_main_tag_character} from "./character_tag"
 import fs from "fs"
@@ -245,7 +246,9 @@ const character_en_cn=new Map<string,string>([
     ["Clorinde","柯洛琳的"],
     ["Arlecchino","阿蕾奇诺"],
     ["Mavuika","玛薇卡"],
-    ["Xilonen","希诺宁"]
+    ["Xilonen","希诺宁"],
+    ["Escoffier","爱可菲"],
+    ["Skirk","丝可克"]
 ]);
 const sub_tag_weight:Map<string,number>=new Map<string,number>([
     ["critical", 2],
@@ -346,6 +349,71 @@ function get_artifact_string(arti:artifact):string{
     }
     return result_str;
 }
+function analyse_all_artifact(){
+    //art art_name user
+    const cha_list=[...character_wei.keys()];
+    const art_list=read_aritact_file();
+    let res=[];
+    art_list.forEach((art, art_index) => {
+        let one_art_score=[]
+        let type_users = new Map<string, string[]>();
+        if (art.position == "flower" || art.position == "feather") {
+            //flower 和 feather 不用去筛主属性，但是套装的筛
+            [...character_wei.keys()].forEach((user)=>{
+                if(
+                    character_aritact.get(user)!=undefined
+                    &&
+                    character_aritact.get(user).includes(art.artifact_name)
+                ){
+                    let c = new character(user);
+                    let score = c.get_Ex1(art);
+                    one_art_score.push([art, score, user])
+                }
+            });
+        } else if(art.position=="cup"){
+            //cup 不用去筛套装，但是主属性的筛
+            let type_users = position_main_tag_character.get(art.position);
+            (type_users.get([...art.main_tag.keys()][0])==undefined?[]:type_users.get([...art.main_tag.keys()][0]))
+            .forEach(user => {
+                let c = new character(user);
+                let score = c.get_Ex1(art);
+                one_art_score.push([art, score, user])
+            });
+        }else{
+            let type_users = position_main_tag_character.get(art.position);
+            (type_users.get([...art.main_tag.keys()][0])==undefined?[]:type_users.get([...art.main_tag.keys()][0]))
+            .forEach(user => {
+                if (
+                    character_aritact.get(user) != undefined
+                    &&
+                    character_aritact.get(user).includes(art.artifact_name)
+                ) {
+                    let c = new character(user);
+                    let score = c.get_Ex1(art);
+                    one_art_score.push([art, score, user])
+                }
+            });
+        }
+        one_art_score=one_art_score.sort((a,b)=>{return -a[1]+b[1]});
+        if(one_art_score.length==0){
+            let c=new character("only_cc");
+            let score=c.get_Ex1(art);
+            //res.push([art,score,"only_cc"]);
+            res.push([
+                [art,score,"only_cc"],
+                ...Array.from({length:4},()=>{return [art,0,null]})
+            ]);
+        }else if(one_art_score.length>5){
+            res.push(one_art_score.slice(0,5));
+        }else{
+            res.push([...one_art_score,
+                ...Array.from({length:5-one_art_score.length},()=>{return [art,0,null]})
+            ]);
+        }
+    });
+    res=res.sort((a,b)=>{return a[0][1]-b[0][1]})
+    return res;
+}
 /*
 function get_artifact_evalute(art:artifact){
     let art_name=art.artifact_name;
@@ -398,6 +466,6 @@ function start_analyse(){
 export{character,
     sub_tag_weight,
     get_character_list,
-    get_character_artifact_ex_async
-    //,start_artifact_evalute
+    get_character_artifact_ex_async,
+    analyse_all_artifact
 }

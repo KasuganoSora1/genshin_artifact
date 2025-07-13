@@ -1,5 +1,17 @@
 
 const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,number>>([
+    ["only_cc",new Map<string,number>([
+        ["lifePercentage",0],
+        ["lifeStatic",0],
+        ["attackPercentage",0],
+        ["attackStatic",0],
+        ["defendPercentage",0],
+        ["defendStatic",0],
+        ["critical",1],
+        ["criticalDamage",1],
+        ["elementalMastery",0],
+        ["recharge",0]
+    ])],
     ["Hutao",new Map<string,number>([
         ["lifePercentage",0.8],
         ["lifeStatic",0.8],
@@ -330,49 +342,74 @@ const character_wei:Map<string,Map<string,number>>=new Map<string,Map<string,num
 const position_main_tag_character=new Map<string,Map<string,string[]>>([
     ["sand",new Map<string,string[]>([
         ["lifePercentage",["Hutao","Yelan",
-"Layla","Nilou","Neuvillette","Furina"]],
+            "Layla","Nilou","Neuvillette","Furina"]],
+
         ["attackPercentage",["Keqing","Beidou",
-"Fischl","YaeMiko","Xiangling","Navia","Escoffier","Skirk"]],
-        ["defendPercentage",["YunJin","Noelle"]],
+            "Fischl","YaeMiko","Xiangling","Navia","Escoffier","Skirk","Mavuika",
+            "Gaming","Clorinde","Arlecchino"]],
+
+        ["defendPercentage",["YunJin","Noelle","Xilonen"]],
+
         ["elementalMastery",["Hutao","Nahida",
-"Keqing","Alhaitham","Fischl","Tighnari","Xiangling"]],
+            "Keqing","Alhaitham","Fischl","Tighnari","Xiangling",
+            "Gaming"]],
+
         ["recharge",["Yelan","RaidenShogun",
-"YunJin","Beidou","Xingqiu","Xiangling","Escoffier"]],
+            "YunJin","Beidou","Xingqiu","Xiangling","Escoffier","Xilonen"]],
     ])],
     ["cup",new Map<string,string[]>([
         ["lifePercentage",["Layla","Nilou","Neuvillette","Furina"]],
+
         ["attackPercentage",["Beidou","Skirk"]],
-        ["defendPercentage",["YunJin"]],
+
+        ["defendPercentage",["YunJin","Xilonen"]],
+
         ["elementalMastery",["Nahida"]],
 
         ["waterBonus",["Yelan","Xingqiu","Neuvillette","Furina"]],
+
         ["dendroBonus",["Nahida","Alhaitham",
-"Tighnari"]],
-        ["fireBonus",["Hutao","Xiangling"]],
+            "Tighnari"]],
+
+        ["fireBonus",["Hutao","Xiangling","Mavuika","Gaming",
+            "Arlecchino"]],
+
         ["thunderBonus",["Keqing","RaidenShogun",
-"Beidou","Fischl","YaeMiko"]],
+            "Beidou","Fischl","YaeMiko","Clorinde"]],
+
         ["windBonus",[]],
+
         ["iceBonus",["Escoffier","Skirk"]],
+
         ["rockBonus",["Noelle","Navia"]],
+
         ["physicalBonus",[]]
     ])],
     ["head",new Map<string,string[]>([
         ["lifePercentage",["Layla","Nilou"]],
+
         ["attackPercentage",["Skirk"]],
-        ["defendStatic",["YunJin"]],
+
+        ["defendStatic",["YunJin","Xilonen"]],
+
         ["elementalMastery",[]],
 
         ["critical",["Hutao","RaidenShogun",
-"Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
-"YunJin","Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
-"Navia","Escoffier","Skirk"]],
+            "Yelan","Nahida","Keqing","Alhaitham",
+            "YunJin","Noelle","Beidou","Fischl","Tighnari",
+            "YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
+            "Navia","Escoffier","Skirk","Mavuika","Gaming","Clorinde",
+            "Arlecchino"]],
+
         ["criticalDamage",["Hutao","RaidenShogun",
-"Yelan","Nahida","Keqing","RaidenShogun","Alhaitham",
-"Noelle","Beidou","Fischl","Tighnari",
-"YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
-"Navia","Escoffier","Skirk"]],
-        ["cureEffect",[]],
+            "Yelan","Nahida","Keqing","Alhaitham",
+            "Noelle","Beidou","Fischl","Tighnari",
+            "YaeMiko","Xingqiu","Xiangling","Neuvillette","Furina",
+            "Navia","Escoffier","Skirk","Mavuika","Gaming","Clorinde",
+            "Arlecchino"
+        ]],
+
+        ["cureEffect",["Xilonen"]],
     ])]
 ]);
 
@@ -380,29 +417,33 @@ const character_aritact=new Map<string,string[]>([
     ["Hutao",["shimenawaReminiscence"]],
     ["Yelan",["emblemOfSeveredFate"]],
     ["Nahida",["DeepwoodMemories","GildedDreams",
-"wandererTroupe","FlowerOfParadiseLost"]],
+        "wandererTroupe","FlowerOfParadiseLost"]],
     ["Layla",["tenacityOfTheMillelith"]],
     ["Keqing",["thunderingFury"]],
     ["RaidenShogun",["emblemOfSeveredFate"]],
     ["Alhaitham",["GildedDreams","wandererTroupe",
-"FlowerOfParadiseLost"]],
+        "FlowerOfParadiseLost"]],
     ["YunJin",["huskOfOpulentDreams"]],
     ["Noelle",["huskOfOpulentDreams","gladiatorFinale"]],
     ["Beidou",["emblemOfSeveredFate"]],
-    ["Fischl",["thunderingFury","gladiatorFinale",
-"GildedDreams","thunderSmoother","wandererTroupe","GoldenTroupe"]],
+    ["Fischl",["GoldenTroupe"]],
     ["Tighnari",["DeepwordMemories","GildedDreams",
-"wandererTroupe"]],
+        "wandererTroupe"]],
     ["Nilou",["tenacityOfTheMillelith","VourukashasGlow"]],
     ["YaeMiko",["ThunderingFury","GildedDreams",
-"gladiatorFinale","wandererTroupe","FlowerOfParadiseLost"]],
+        "gladiatorFinale","wandererTroupe","FlowerOfParadiseLost"]],
     ["Xingqiu",["emblemOfSeveredFate"]],
     ["Xiangling",["emblemOfSeveredFate"]],
     ["Neuvillette",["MarechausseeHunter"]],
-    ["Furina",["MarechausseeHunter","GoldenTroup"]],
+    ["Furina",["GoldenTroup"]],
     ["Navia",["NighttimeWhispersInTheEchoingWoods"]],
     ["Escoffier",["GoldenTroupe"]],
-    ["Skirk",["MarechausseeHunter","FinaleOfTheDeepGalleries"]]
+    ["Skirk",["MarechausseeHunter","FinaleOfTheDeepGalleries"]],
+    ["Mavuika",["ObsidianCodex"]],
+    ["Xilonen",["ScrollOfTheHeroOfCinderCity"]],
+    ["Gaming",["MarechausseeHunter"]],
+    ["Clorinde",["thunderingFury","FragmentOfHarmonicWhimsy"]],
+    ["Arlecchino",["FragmentOfHarmonicWhimsy"]]
 ]);
 
 const ex_count_ratio=[0.85,1.7,2.55,3.4,4.25];

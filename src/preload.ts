@@ -1,5 +1,5 @@
-import { ipcMain } from "electron";
-import { character } from "./artifact/character";
+//import { ipcMain } from "electron";
+//import { character } from "./artifact/character";
 
 const { contextBridge,ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('data', {
@@ -11,5 +11,6 @@ contextBridge.exposeInMainWorld('data', {
         posi_name:string,main_name:string
         )=>ipcRenderer.invoke('get_character_artifact_ex_async',[char_name,arit_name,posi_name,main_name]),
     open_yas:()=>ipcRenderer.invoke('open_yas'),
-    start_analyse:()=>ipcRenderer.invoke("start_analyse")
+    start_analyse:()=>ipcRenderer.invoke("start_analyse"),
+    analyse_all_artifact:()=>ipcRenderer.invoke("analyse_all_artifact")
 });

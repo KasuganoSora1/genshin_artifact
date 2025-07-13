@@ -1,6 +1,10 @@
 import "../src/artifact/artifact"
 import { artifact,read_aritact_file } from "../src/artifact/artifact"
 import {character } from "../src/artifact/character"
+import {character_aritact,
+    character_wei,
+    position_main_tag_character
+} from "../src/artifact/character_tag"
 let c=new character("Hutao");
 let a=new artifact(5,
     3,
@@ -59,6 +63,7 @@ c.get_Ex_sync(arts[521]).then((res)=>{
     console.log(res.toString());}
 );
 */
+/*
 function fn(index){
     if(arts[index].sub_tag.size==4){
         fn(index+1);
@@ -77,4 +82,24 @@ function fn(index){
         fn(index+1);
     }); 
 }
-fn(0);
+fn(0);*/
+let char_list=[...character_wei.keys()];
+char_list.forEach((char)=>{
+    if(!character_aritact.has(char)){
+        console.log(char+"未设置圣遗物");
+    }
+});
+console.log("------------------");
+char_list.forEach((char)=>{
+    for(let [k,v] of position_main_tag_character){
+        let count=0;
+        for(let [k1,v1] of v){ //v names
+            if(v1.includes(char)){
+                count++;
+            }
+        }
+        if(count==0){
+            console.log(char+"在"+k+"位置未设置圣遗物");
+        }
+    }
+});

@@ -57,7 +57,10 @@ function get_artifact_list(){
         "FragmentOfHarmonicWhimsy":"谐律套",
         "UnfinishedReverie":"燃烧套",
         "FinaleOfTheDeepGalleries":"深廊终曲",
-        "LongNightsOath":"长夜之誓"
+        "LongNightsOath":"长夜之誓",
+        "maidenBeloved":"被怜爱的少女",
+        "VourukashasGlow":"花海甘露之光",
+        "oceanHuedClam":"海染砗磲"
     }
     /*
     return [
